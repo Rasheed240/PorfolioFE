@@ -1,0 +1,144 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.125rem;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.emailCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    background: hsla(var(--card), 0.5);
+    border: 1px solid hsla(var(--border), 0.5);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.emailCard:hover {
+    border-color: hsla(var(--primary), 0.5);
+    transform: translateY(-2px);
+    background: hsla(var(--card), 0.8);
+    box-shadow: 0 10px 30px -10px hsla(var(--primary), 0.15);
+}
+
+.iconWrapper {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: hsla(var(--primary), 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--primary));
+    margin-bottom: 1.5rem;
+}
+
+.cardTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+    margin-bottom: 0.5rem;
+}
+
+.emailAddress {
+    font-size: 1.25rem;
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 1.5rem;
+}
+
+.cta {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: hsl(var(--primary));
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.emailCard:hover .cta {
+    opacity: 1;
+}
+
+.socialGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%;
+
+    @media (min-width: 640px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.socialCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: hsla(var(--secondary), 0.2);
+    border: 1px solid hsla(var(--border), 0.2);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: all 0.2s;
+    color: hsl(var(--muted-foreground));
+}
+
+.socialCard:hover {
+    background: hsla(var(--secondary), 0.5);
+    color: hsl(var(--foreground));
+    border-color: hsla(var(--border), 0.5);
+    transform: translateY(-2px);
+}
+
+.socialIcon {
+    transition: transform 0.2s;
+}
+
+.socialCard:hover .socialIcon {
+    transform: scale(1.1);
+}
+
+.socialLabel {
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.note {
+    margin-top: 3rem;
+    text-align: center;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.875rem;
+}
