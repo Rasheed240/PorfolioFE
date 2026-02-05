@@ -1,0 +1,205 @@
+.header {
+    position: relative;
+    padding: 8rem 0 4rem;
+    overflow: hidden;
+    border-bottom: 1px solid hsla(var(--border), 0.1);
+    background: hsla(var(--background), 0.5);
+}
+
+.backgroundBlur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top center, hsla(var(--primary), 0.1) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.headerContent {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+}
+
+.backLink {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: hsl(var(--muted-foreground));
+    text-decoration: none;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    transition: color 0.2s;
+}
+
+.backLink:hover {
+    color: hsl(var(--foreground));
+}
+
+.category {
+    color: hsl(var(--primary));
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    border: 1px solid hsla(var(--primary), 0.3);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background: hsla(var(--primary), 0.1);
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: hsl(var(--foreground));
+    margin: 1rem 0 0.5rem;
+}
+
+.tagline {
+    font-size: 1.25rem;
+    color: hsl(var(--muted-foreground));
+    max-width: 700px;
+}
+
+.links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.primaryLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.primaryLink:hover {
+    opacity: 0.9;
+}
+
+.secondaryLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: hsla(var(--secondary), 0.5);
+    border: 1px solid hsla(var(--border), 0.5);
+    color: hsl(var(--foreground));
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.secondaryLink:hover {
+    background: hsla(var(--secondary), 0.8);
+}
+
+.mainContent {
+    margin-top: -2rem;
+    /* Pull up over header padding if wanted, or just gap */
+    padding-top: 3rem;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gallery {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.mediaItem {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid hsla(var(--border), 0.5);
+    background: hsla(var(--card), 0.5);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+}
+
+.mediaImage,
+.mediaVideo {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+
+    @media (min-width: 1024px) {
+        grid-template-columns: 1fr 300px;
+    }
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid hsla(var(--border), 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.description {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 1.5rem;
+}
+
+.longDescription p {
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+    color: hsl(var(--muted-foreground));
+}
+
+.sidebarCard {
+    background: hsla(var(--card), 0.5);
+    border: 1px solid hsla(var(--border), 0.5);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+.sidebarTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: hsl(var(--foreground));
+}
+
+.techList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.techItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    background: hsla(var(--secondary), 0.3);
+    color: hsl(var(--foreground));
+    font-size: 0.875rem;
+}
