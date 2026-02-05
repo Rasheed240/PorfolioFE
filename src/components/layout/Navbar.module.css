@@ -1,0 +1,63 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    border-bottom: 1px solid hsla(var(--border), 0.1);
+    background: hsla(var(--background), 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.container {
+    display: flex;
+    height: 4rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    transition: opacity 0.2s;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.navList {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.navLink {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: hsl(var(--muted-foreground));
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.navLink:hover {
+    color: hsl(var(--primary));
+}
+
+@media (max-width: 768px) {
+    .navList {
+        display: none;
+    }
+
+    /* Mobile menu logic would go here or utilize Client Component */
+}
