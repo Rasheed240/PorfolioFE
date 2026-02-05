@@ -1,0 +1,227 @@
+.introSection {
+    margin-bottom: 6rem;
+    max-width: 800px;
+}
+
+.introHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.resumeButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid hsla(var(--border), 0.5);
+    background: transparent;
+    color: hsl(var(--foreground));
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.resumeButton:hover {
+    background: hsla(var(--secondary), 0.5);
+    border-color: hsl(var(--primary));
+}
+
+.bio {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: hsl(var(--muted-foreground));
+}
+
+.para {
+    margin-bottom: 1.5rem;
+}
+
+.timelineSection {
+    margin-bottom: 6rem;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+}
+
+.sectionTitle::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background: hsla(var(--border), 0.15);
+    margin-left: 1rem;
+}
+
+/* Timeline specific styles */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    border-left: 2px solid hsla(var(--border), 0.1);
+    padding-left: 2rem;
+    position: relative;
+}
+
+.timelineItem {
+    position: relative;
+}
+
+.timelineMarker {
+    position: absolute;
+    left: -2.4rem;
+    /* Adjust based on padding/border width */
+    top: 0.4rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: hsl(var(--background));
+    border: 2px solid hsl(var(--primary));
+    box-shadow: 0 0 10px hsla(var(--primary), 0.4);
+}
+
+.timelineHeader {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+}
+
+@media (min-width: 640px) {
+    .timelineHeader {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+    }
+}
+
+.role {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+}
+
+.company {
+    font-size: 1.125rem;
+    color: hsl(var(--primary));
+    font-weight: 500;
+}
+
+.meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 1rem;
+}
+
+.duration {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.description {
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.achievements {
+    list-style: disc;
+    padding-left: 1.5rem;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.95rem;
+}
+
+.achievements li {
+    margin-bottom: 0.5rem;
+}
+
+/* Grid layout for Education/Certs */
+.grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.card {
+    background: hsla(var(--card), 0.4);
+    border: 1px solid hsla(var(--border), 0.4);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    border-color: hsla(var(--border), 0.8);
+    background: hsla(var(--card), 0.6);
+}
+
+.cardHeader {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+}
+
+.school,
+.certName {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+}
+
+.degree,
+.issuer {
+    color: hsl(var(--muted-foreground));
+    font-size: 0.95rem;
+}
+
+.cardMeta {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cardDescription {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: hsl(var(--muted-foreground));
+}
+
+.certLink {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: hsl(var(--primary));
+    text-decoration: underline;
+    margin-top: 0.5rem;
+}
+
+.certLink:hover {
+    color: hsl(var(--primary-foreground));
+    /* Maybe not foreground, just lighter */
+    opacity: 0.8;
+}
