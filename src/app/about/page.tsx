@@ -3,6 +3,7 @@ import { api } from '@/lib/api';
 import { cn, formatDate } from '@/lib/utils';
 import { Briefcase, GraduationCap, Award, Calendar, Download } from 'lucide-react';
 import styles from './About.module.css';
+import { Profile, Experience, Education, Certification } from '@/lib/types';
 
 export const metadata = {
     title: 'About | Rasheed Babatunde',
@@ -10,10 +11,10 @@ export const metadata = {
 };
 
 export default async function AboutPage() {
-    let profile = null;
-    let experience = [];
-    let education = [];
-    let certifications = [];
+    let profile: Profile | null = null;
+    let experience: Experience[] = [];
+    let education: Education[] = [];
+    let certifications: Certification[] = [];
 
     try {
         const results = await Promise.all([
