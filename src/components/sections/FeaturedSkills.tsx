@@ -2,9 +2,10 @@ import Link from 'next/link';
 import { api } from '@/lib/api';
 import { cn } from '@/lib/utils';
 import styles from './FeaturedSkills.module.css';
+import { Skill } from '@/lib/types';
 
 export default async function FeaturedSkills() {
-    let skills = [];
+    let skills: Skill[] = [];
 
     try {
         skills = await api.getFeaturedSkills();

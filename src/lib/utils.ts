@@ -22,9 +22,17 @@ export function formatCurrency(amount: number) {
 /**
  * Format date
  */
-export function formatDate(date: string | Date) {
+export function formatDate(date: string | Date | null | undefined) {
+    if (!date) return '';
+
+    const d = new Date(date);
+    // Check for invalid date
+    if (isNaN(d.getTime())) {
+        return String(date);
+    }
+
     return new Intl.DateTimeFormat('en-US', {
         month: 'long',
         year: 'numeric',
-    }).format(new Date(date));
+    }).format(d);
 }

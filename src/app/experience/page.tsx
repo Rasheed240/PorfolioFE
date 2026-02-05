@@ -3,6 +3,7 @@ import { api } from '@/lib/api';
 import { cn, formatDate } from '@/lib/utils';
 import { Briefcase, Calendar } from 'lucide-react';
 import styles from './Experience.module.css';
+import { Experience } from '@/lib/types';
 
 export const metadata = {
     title: 'Experience | Rasheed Babatunde',
@@ -10,7 +11,7 @@ export const metadata = {
 };
 
 export default async function ExperiencePage() {
-    let experience = [];
+    let experience: Experience[] = [];
 
     try {
         experience = await api.getExperience().catch(() => []);

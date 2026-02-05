@@ -3,6 +3,7 @@ import { api } from '@/lib/api';
 import { cn } from '@/lib/utils';
 import { ArrowUpRight, FolderGit2 } from 'lucide-react';
 import styles from './Projects.module.css';
+import { Project } from '@/lib/types';
 
 export const metadata = {
     title: 'Projects | Rasheed Babatunde',
@@ -10,7 +11,7 @@ export const metadata = {
 };
 
 export default async function ProjectsPage() {
-    let projects = [];
+    let projects: Project[] = [];
 
     try {
         const data = await api.getProjects();

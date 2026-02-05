@@ -2,6 +2,7 @@ import { api } from '@/lib/api';
 import { cn } from '@/lib/utils';
 import { Mail, Github, Linkedin, Twitter, Globe } from 'lucide-react';
 import styles from './Contact.module.css';
+import { SiteSettings, Profile } from '@/lib/types';
 
 export const metadata = {
     title: 'Contact | Rasheed Babatunde',
@@ -18,8 +19,8 @@ const IconMap: Record<string, any> = {
 };
 
 export default async function ContactPage() {
-    let settings = null;
-    let profile = null;
+    let settings: SiteSettings | null = null;
+    let profile: Profile | null = null;
 
     try {
         const results = await Promise.all([
