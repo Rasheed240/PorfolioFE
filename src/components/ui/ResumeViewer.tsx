@@ -10,7 +10,7 @@ interface ResumeViewerProps {
     onClose: () => void;
 }
 
-const FALLBACK_RESUME_URL = '/api/resume/';
+const FALLBACK_RESUME_URL = '/resume.pdf';
 
 export function ResumeViewer({ resumeUrl, isOpen, onClose }: ResumeViewerProps) {
     const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +25,7 @@ export function ResumeViewer({ resumeUrl, isOpen, onClose }: ResumeViewerProps) 
             try {
                 const response = await fetch(resumeUrl, { method: 'HEAD' });
                 if (!response.ok) {
-                    console.warn(`Resume URL returned ${response.status}, using fallback`);
+                    console.warn(`Resume URL returned ${response.status}, using fallback: ${FALLBACK_RESUME_URL}`);
                     setCurrentUrl(FALLBACK_RESUME_URL);
                     setUseFallback(true);
                 }
