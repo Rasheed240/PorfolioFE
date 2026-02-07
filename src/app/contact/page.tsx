@@ -37,6 +37,16 @@ export default async function ContactPage() {
     const socialLinks = profile?.social_links || [];
     const contactEmail = settings?.contact_email || 'hello@example.com';
 
+    // Filter out email from social grid and deduplicate by platform
+    const filteredSocialLinks = socialLinks.reduce((acc: typeof socialLinks, current) => {
+        const platformLower = current.platform.toLowerCase();
+        if (platformLower === 'email') return acc;
+        if (!acc.find(item => item.platform.toLowerCase() === platformLower)) {
+            acc.push(current);
+        }
+        return acc;
+    }, []);
+
     return (
         <main className="min-h-screen bg-background pt-24 pb-20">
             <div className={cn('container', styles.container)}>
@@ -57,11 +67,11 @@ export default async function ContactPage() {
                         </div>
                         <h2 className={styles.cardTitle}>Email Me</h2>
                         <p className={styles.emailAddress}>{contactEmail}</p>
-                        <span className={styles.cta}>Send an email &toea;</span>
+                        <span className={styles.cta}>Send an email &rarr;</span>
                     </a>
 
                     <div className={styles.socialGrid}>
-                        {socialLinks.map((link) => {
+                        {filteredSocialLinks.map((link) => {
                             const Icon = IconMap[link.platform.toLowerCase()] || Globe;
                             return (
                                 <a
