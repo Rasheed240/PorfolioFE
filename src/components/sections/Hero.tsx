@@ -51,9 +51,9 @@ export default async function Hero() {
                                 <ArrowRight size={18} />
                             </Link>
 
-                            {profile.resume && (
+                            {profile.resume_url && (
                                 <a
-                                    href={profile.resume}
+                                    href={profile.resume_url}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={styles.buttonOutline}

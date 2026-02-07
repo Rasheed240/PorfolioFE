@@ -24,7 +24,14 @@ async function fetchAPI<T>(endpoint: string, options: RequestInit = {}, retries 
     };
 
     try {
-        const res = await fetch(`${API_URL}${endpoint}`, defaultOptions);
+        // Ensure no double /api or // in URL
+        let base = API_URL.replace(/\/$/, "");
+        let ep = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+        // Remove duplicate /api if present
+        if (base.endsWith("/api") && ep.startsWith("/api/")) {
+            ep = ep.replace(/^\/api\//, "/");
+        }
+        const res = await fetch(`${base}${ep}`, defaultOptions);
 
         if (!res.ok) {
             // If it's a server error (5xx) or rate limit (429), we might want to retry
@@ -53,7 +60,7 @@ async function fetchAPI<T>(endpoint: string, options: RequestInit = {}, retries 
 }
 
 export const api = {
-    getProfile: () => fetchAPI<Profile>('/identity/profile/'),
+    getProfile: () => fetchAPI<Profile>("/identity/profile/"),
 
     getSettings: () => fetchAPI<SiteSettings>('/content/settings/'),
 

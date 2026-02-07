@@ -22,7 +22,7 @@ export interface Profile {
     bio_short: string;
     bio_long: string;
     avatar: string | null;
-    resume: string | null;
+    resume_url: string | null;
     social_links: SocialLink[];
 }
 

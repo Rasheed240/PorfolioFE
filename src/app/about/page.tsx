@@ -42,8 +42,8 @@ export default async function AboutPage() {
                         <h1 className={styles.title}>
                             About <span className="text-gradient">Me</span>
                         </h1>
-                        {profile?.resume && (
-                            <a href={profile.resume} className={styles.resumeButton} target="_blank" rel="noopener noreferrer">
+                        {profile?.resume_url && (
+                            <a href={profile.resume_url} className={styles.resumeButton} target="_blank" rel="noopener noreferrer">
                                 <Download size={18} /> Resume
                             </a>
                         )}
