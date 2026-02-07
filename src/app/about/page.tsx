@@ -4,6 +4,7 @@ import { cn, formatDate } from '@/lib/utils';
 import { Briefcase, GraduationCap, Award, Calendar, Download } from 'lucide-react';
 import styles from './About.module.css';
 import { Profile, Experience, Education, Certification } from '@/lib/types';
+import { ResumePopup } from '@/components/ui/ResumePopup';
 
 export const metadata = {
     title: 'About | Rasheed Babatunde',
@@ -43,9 +44,11 @@ export default async function AboutPage() {
                             About <span className="text-gradient">Me</span>
                         </h1>
                         {profile?.resume_url && (
-                            <a href={profile.resume_url} className={styles.resumeButton} target="_blank" rel="noopener noreferrer">
-                                <Download size={18} /> Resume
-                            </a>
+                            <ResumePopup resumeUrl={profile.resume_url}>
+                                <a className={styles.resumeButton}>
+                                    <Download size={18} /> Resume
+                                </a>
+                            </ResumePopup>
                         )}
                     </div>
 

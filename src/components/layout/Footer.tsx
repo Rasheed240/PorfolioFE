@@ -4,6 +4,7 @@ import { api } from '@/lib/api';
 import { cn } from '@/lib/utils';
 import { Github, Linkedin, Mail, Globe, Twitter } from 'lucide-react';
 import styles from './Footer.module.css';
+import { FooterLinks } from './FooterLinks';
 
 const IconMap: Record<string, any> = {
     github: Github,
@@ -18,6 +19,7 @@ export default async function Footer() {
     const currentYear = new Date().getFullYear();
     let footerGroups: { column: string, links: FooterLink[] }[] = [];
     let socialLinks: SocialLink[] = [];
+    let resumeUrl: string | null = null;
 
     try {
         const [groupsData, profileData] = await Promise.all([
@@ -27,6 +29,7 @@ export default async function Footer() {
 
         footerGroups = groupsData || [];
         socialLinks = profileData?.social_links || [];
+        resumeUrl = profileData?.resume_url || null;
     } catch (error) {
         console.error("Failed to fetch footer data", error);
     }
@@ -65,26 +68,7 @@ export default async function Footer() {
                         </div>
                     </div>
 
-                    <div className={styles.linksGrid}>
-                        {footerGroups.map((group, idx) => (
-                            <div key={idx} className={styles.linkGroup}>
-                                <h3 className={styles.groupTitle}>{group.column}</h3>
-                                <ul className={styles.linkList}>
-                                    {group.links.map((link) => (
-                                        <li key={link.id}>
-                                            <a
-                                                href={link.url}
-                                                target={link.is_external ? "_blank" : undefined}
-                                                className={styles.link}
-                                            >
-                                                {link.label}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
+                    <FooterLinks groups={footerGroups} resumeUrl={resumeUrl} />
                 </div>
 
                 <div className={styles.bottomBar}>

@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { ArrowRight, Download } from 'lucide-react';
 import styles from './Hero.module.css';
 import { FadeIn, TextReveal } from '@/components/ui/Motion';
+import { ResumePopup } from '@/components/ui/ResumePopup';
 
 export default async function Hero() {
     let profile = null;
@@ -52,15 +53,12 @@ export default async function Hero() {
                             </Link>
 
                             {profile.resume_url && (
-                                <a
-                                    href={profile.resume_url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={styles.buttonOutline}
-                                >
-                                    Download Resume
-                                    <Download size={18} />
-                                </a>
+                                <ResumePopup resumeUrl={profile.resume_url}>
+                                    <button className={styles.buttonOutline}>
+                                        Download Resume
+                                        <Download size={18} />
+                                    </button>
+                                </ResumePopup>
                             )}
                         </div>
                     </FadeIn>
