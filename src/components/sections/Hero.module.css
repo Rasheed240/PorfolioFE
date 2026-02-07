@@ -64,6 +64,28 @@
     box-shadow: 0 0 8px #22c55e;
 }
 
+.avatarContainer {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid hsl(var(--border));
+    box-shadow: 0 0 30px hsla(var(--primary), 0.3);
+}
+
+@media (min-width: 768px) {
+    .avatar {
+        width: 200px;
+        height: 200px;
+    }
+}
+
 .title {
     font-size: 3rem;
     line-height: 1.1;

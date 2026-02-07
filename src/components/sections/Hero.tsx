@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { api } from '@/lib/api';
 import { cn } from '@/lib/utils';
 import { ArrowRight, Download } from 'lucide-react';
@@ -31,6 +32,22 @@ export default async function Hero() {
                             Available for hire
                         </div>
                     </FadeIn>
+
+                    {profile.avatar_url && (
+                        <FadeIn delay={0.2}>
+                            <div className={styles.avatarContainer}>
+                                <Image
+                                    src={profile.avatar_url}
+                                    alt={profile.full_name}
+                                    width={200}
+                                    height={200}
+                                    unoptimized
+                                    priority
+                                    className={styles.avatar}
+                                />
+                            </div>
+                        </FadeIn>
+                    )}
 
                     <h1 className={styles.title}>
                         <TextReveal text={`Hi, I'm ${profile.full_name.split(' ')[0]}.`} className="justify-center" />
