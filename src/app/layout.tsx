@@ -31,10 +31,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-background text-foreground antialiased selection:bg-primary selection:text-white flex flex-col">
+        <main style={{ paddingTop: '3.5rem' }}>
         <Navbar />
         <KeepAlive />
         {children}
         <Footer />
+        </main>
       </body>
     </html>
   );
