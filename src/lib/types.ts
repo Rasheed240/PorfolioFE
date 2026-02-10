@@ -1,6 +1,6 @@
 export interface MediaItem {
     id: string;
-    type: 'image' | 'video' | 'document' | 'embed';
+    media_type: 'image' | 'video' | 'document' | 'embed';
     url: string;
     thumbnail: string | null;
     caption: string;
@@ -44,7 +44,9 @@ export interface SkillGroup {
 export interface ProjectTech {
     id: string;
     name: string;
-    icon_url: string | null;
+    display_name: string;
+    role: string;
+    skill_icon: string | null;
 }
 
 export interface ProjectCategory {
@@ -60,7 +62,7 @@ export interface Project {
     tagline: string;
     description_short: string;
     description_long: string;
-    thumbnail: string | null;
+    thumbnail_url: string | null;
     github_url: string;
     live_url: string;
     tech_stack: ProjectTech[];

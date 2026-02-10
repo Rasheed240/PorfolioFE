@@ -202,4 +202,11 @@
     background: hsla(var(--secondary), 0.3);
     color: hsl(var(--foreground));
     font-size: 0.875rem;
+    flex-wrap: wrap;
+}
+
+.techRole {
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+    margin-left: auto;
 }

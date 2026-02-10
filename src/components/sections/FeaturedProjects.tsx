@@ -39,8 +39,8 @@ export default async function FeaturedProjects() {
                             <Link href={`/projects/${project.slug}`} className={styles.card}>
                                 <div className={styles.imageWrapper}>
                                     {/* Fallback color if no thumbnail, or use Next Image if configured */}
-                                    {project.thumbnail ? (
-                                        <img src={project.thumbnail} alt={project.title} className={styles.image} />
+                                    {project.thumbnail_url ? (
+                                        <img src={project.thumbnail_url} alt={project.title} className={styles.image} />
                                     ) : (
                                         <div className={styles.placeholderImage} />
                                     )}

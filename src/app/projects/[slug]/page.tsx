@@ -5,13 +5,14 @@ import { ArrowLeft, Github, Globe, Calendar } from 'lucide-react';
 import styles from './ProjectDetail.module.css';
 
 interface Props {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }
 
 // Generate metadata dynamically
 export async function generateMetadata({ params }: Props) {
     try {
-        const project = await api.getProject(params.slug);
+        const { slug } = await params;
+        const project = await api.getProject(slug);
         return {
             title: `${project.title} | Rasheed Babatunde`,
             description: project.description_short,
@@ -24,10 +25,11 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function ProjectDetail({ params }: Props) {
+    const { slug } = await params;
     let project = null;
 
     try {
-        project = await api.getProject(params.slug);
+        project = await api.getProject(slug);
     } catch (error) {
         console.error("Failed to fetch project", error);
     }
@@ -87,10 +89,10 @@ export default async function ProjectDetail({ params }: Props) {
                     <div className={styles.gallery}>
                         {project.media_items.map((media) => (
                             <div key={media.id} className={styles.mediaItem}>
-                                {media.type === 'image' && (
+                                {media.media_type === 'image' && (
                                     <img src={media.url} alt={media.caption || project.title} className={styles.mediaImage} />
                                 )}
-                                {media.type === 'video' && (
+                                {media.media_type === 'video' && (
                                     <video src={media.url} controls className={styles.mediaVideo} />
                                 )}
                                 {/* Handle embeds/docs if needed */}
@@ -120,8 +122,9 @@ export default async function ProjectDetail({ params }: Props) {
                             <div className={styles.techList}>
                                 {project.tech_stack?.map((tech) => (
                                     <div key={tech.id} className={styles.techItem}>
-                                        {tech.icon_url && <img src={tech.icon_url} alt="" className="w-5 h-5 object-contain" />}
-                                        <span>{tech.name}</span>
+                                        {tech.skill_icon && <img src={tech.skill_icon} alt="" className="w-5 h-5 object-contain" />}
+                                        <span>{tech.display_name}</span>
+                                        {tech.role && <span className={styles.techRole}>{tech.role}</span>}
                                     </div>
                                 ))}
                             </div>

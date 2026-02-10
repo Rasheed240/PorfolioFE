@@ -42,8 +42,8 @@ export default async function ProjectsPage() {
                         {projects.map((project) => (
                             <Link key={project.id} href={`/projects/${project.slug}`} className={styles.card}>
                                 <div className={styles.imageWrapper}>
-                                    {project.thumbnail ? (
-                                        <img src={project.thumbnail} alt={project.title} className={styles.image} />
+                                    {project.thumbnail_url ? (
+                                        <img src={project.thumbnail_url} alt={project.title} className={styles.image} />
                                     ) : (
                                         <div className={styles.placeholderImage} />
                                     )}
@@ -65,10 +65,10 @@ export default async function ProjectsPage() {
                                             {project.tech_stack?.slice(0, 3).map((tech) => (
                                                 <span key={tech.id} className={styles.techIcon}>
                                                     {/* If icon exists use it, else text */}
-                                                    {tech.icon_url ? (
-                                                        <img src={tech.icon_url} alt={tech.name} className="w-4 h-4" />
+                                                    {tech.skill_icon ? (
+                                                        <img src={tech.skill_icon} alt={tech.display_name} className="w-4 h-4" />
                                                     ) : (
-                                                        tech.name
+                                                        tech.display_name
                                                     )}
                                                 </span>
                                             ))}
