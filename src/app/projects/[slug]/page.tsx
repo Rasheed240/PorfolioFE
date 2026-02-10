@@ -93,7 +93,13 @@ export default async function ProjectDetail({ params }: Props) {
                                     <img src={media.url} alt={media.caption || project.title} className={styles.mediaImage} />
                                 )}
                                 {media.media_type === 'video' && (
-                                    <video src={media.url} controls className={styles.mediaVideo} />
+                                    <video
+                                        src={media.url}
+                                        controls
+                                        preload="metadata"
+                                        poster={media.poster_url || undefined}
+                                        className={styles.mediaVideo}
+                                    />
                                 )}
                                 {/* Handle embeds/docs if needed */}
                             </div>

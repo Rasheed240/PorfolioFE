@@ -2,7 +2,7 @@ export interface MediaItem {
     id: string;
     media_type: 'image' | 'video' | 'document' | 'embed';
     url: string;
-    thumbnail: string | null;
+    poster_url: string | null;
     caption: string;
 }
 
