@@ -60,19 +60,9 @@ export default async function ProjectsPage() {
                                     <h2 className={styles.projectTitle}>{project.title}</h2>
                                     <p className={styles.tagline}>{project.tagline}</p>
 
+                                    <p className={styles.description}>{project.description_short}</p>
+
                                     <div className={styles.footer}>
-                                        <div className={styles.techStack}>
-                                            {project.tech_stack?.slice(0, 3).map((tech) => (
-                                                <span key={tech.id} className={styles.techIcon}>
-                                                    {/* If icon exists use it, else text */}
-                                                    {tech.skill_icon ? (
-                                                        <img src={tech.skill_icon} alt={tech.display_name} className="w-4 h-4" />
-                                                    ) : (
-                                                        tech.display_name
-                                                    )}
-                                                </span>
-                                            ))}
-                                        </div>
                                         <span className={styles.arrow}><ArrowUpRight size={18} /></span>
                                     </div>
                                 </div>
