@@ -1,0 +1,137 @@
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.modal {
+    width: 90%;
+    max-width: 420px;
+    background: white;
+    border-radius: 12px;
+    padding: 32px 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.25s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(16px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 10px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 24px;
+    line-height: 1.55;
+}
+
+.contactLink {
+    color: #3b82f6;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.contactLink:hover {
+    color: #2563eb;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 15px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.error {
+    font-size: 13px;
+    color: #ef4444;
+    margin: 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.cancelBtn {
+    flex: 1;
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.cancelBtn:hover {
+    background: #e5e7eb;
+}
+
+.submitBtn {
+    flex: 1;
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    background: #3b82f6;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submitBtn:hover {
+    background: #2563eb;
+}
+
+.submitBtn:active {
+    background: #1d4ed8;
+}
+
+@media (max-width: 480px) {
+    .modal {
+        padding: 24px 20px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+}
