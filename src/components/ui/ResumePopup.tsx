@@ -5,8 +5,6 @@ import Link from 'next/link';
 import { ResumeViewer } from './ResumeViewer';
 import styles from './ResumePassphrase.module.css';
 
-const PASSPHRASE = '31012000';
-
 interface ResumePopupProps {
     resumeUrl: string;
     children: ReactNode;
@@ -29,13 +27,32 @@ export function ResumePopup({ resumeUrl, children }: ResumePopupProps) {
 
     const handleOpen = () => setGateOpen(true);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (input === PASSPHRASE) {
-            setGateOpen(false);
-            setViewerOpen(true);
-        } else {
-            setError('Incorrect passphrase. Please try again or contact me directly.');
+        try {
+            const apiRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api'}/identity/verify-passphrase/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ passphrase: input }),
+            });
+            
+            if (apiRes.ok) {
+                const data = await apiRes.json();
+                if (data.valid) {
+                    setGateOpen(false);
+                    setViewerOpen(true);
+                } else {
+                    setError('Incorrect passphrase. Please try again or contact me directly.');
+                    setInput('');
+                }
+            } else {
+                setError('Incorrect passphrase. Please try again or contact me directly.');
+                setInput('');
+            }
+        } catch (err) {
+            setError('Error verifying passphrase. Please try again later.');
             setInput('');
         }
     };
@@ -60,7 +77,11 @@ export function ResumePopup({ resumeUrl, children }: ResumePopupProps) {
                     <div className={styles.modal}>
                         <h2 className={styles.title}>Access Resume</h2>
                         <p className={styles.subtitle}>
-                            This resume is protected. Enter the passphrase to view it, or{' '}
+                            This resume is protected. Enter the passphrase to view it.
+                            <br/><br/>
+                            <span className="text-sm">Hints: <br/>- Whats my secondary school nickname?<br/>- What is my Date of Birth (DDMMYYYY)?</span>
+                            <br/><br/>
+                            Otherwise,{' '}
                             <Link href="/contact" className={styles.contactLink} onClick={() => setGateOpen(false)}>
                                 contact me
                             </Link>{' '}
